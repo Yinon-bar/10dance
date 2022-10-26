@@ -88,7 +88,7 @@ submit.addEventListener("click", (e) => {
     alert("ת.ז ארוכה מידי");
   } else {
     let newId = inputText.value;
-    if (newId.indexOf("0") == 0) {
+    if (newId[0] === "0") {
       newId = newId.substr(1);
       console.log(newId);
       inputText.value = newId;
