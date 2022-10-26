@@ -1,0 +1,109 @@
+@font-face {
+  src: url("../fonts/Huji-Regular.otf");
+  font-family: Huji-regular;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  font-family: Huji-regular;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(#a5d5e2, rgba(255, 255, 255, 0.4)),
+    url(/img/Students.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+header img {
+  height: 100px;
+}
+
+header h1 {
+  font-size: 2.7rem;
+  color: #1a1f49;
+}
+
+.container {
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main .buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+button {
+  font-family: "Assistant", sans-serif;
+  width: 17rem;
+  height: 4.6rem;
+  margin: 0.2rem;
+  font-size: 2.5rem;
+  background: #cefa72;
+  border-radius: 10px;
+  border: #1a1f49 3px solid;
+  cursor: pointer;
+}
+
+#btnTableDelete {
+  background-color: #fa7272;
+  color: #1a1f49;
+  margin: 0;
+  padding: 0;
+  height: 2rem;
+  font-size: 1.2rem;
+  width: 4rem;
+}
+#btnTableEdit {
+  background-color: #cefa72;
+  color: #1a1f49;
+  margin: 0;
+  padding: 0;
+  height: 2rem;
+  font-size: 1.2rem;
+  width: 4rem;
+}
+
+button:hover,
+#btnTableDelete:hover,
+#btnTableEdit:hover {
+  background: #1a1f49;
+  color: #cefa72;
+  transition: 0.2s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.98);
+  transition: 1ms;
+}
+
+h3 {
+  position: fixed;
+  bottom: 0;
+  left: 47%;
+  /* margin-top: 25vh; */
+}
