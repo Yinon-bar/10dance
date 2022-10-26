@@ -5,8 +5,7 @@ const doApi = () => {
   fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
-      // console.log(data);
-      createAllStudents(data);
+      printAttendeeFromList(data);
     });
 };
 
@@ -21,35 +20,15 @@ const doApi2 = () => {
   });
 };
 
-const createAllStudents = (_ar) => {
-  let isHere = false;
-  let userName;
-  for (const item of _ar) {
-    console.log(item);
-    if (item.t_z_id == inputText.value) {
-      // console.log("success");
-      isHere = true;
-      userName = console.log(isHere);
-      const printUser = function (arr) {
-        console.log(arr.id);
-        window.location = "../admin/print_page.html?id=" + arr.id;
+const printUser = function (arg) {
+  window.location = "../admin/print_page.html?id=" + arg.id;
+};
 
-        // זה הקוד הנכון בשרת האמיתי
-        // window.location = "https://www.yinon-bar.online/Ofer/add_students/Admin/print_page.html?id=" + arr.id;
-      };
-      printUser(item);
-      break;
-      // submitOk();
-    } else {
-      console.log(isHere);
-    }
-  }
-  if (isHere == true) {
-    // const print = (_ar) => {
-    //   console.log(_ar);
-
-    // };
-    submitOk(_ar);
+const printAttendeeFromList = (list) => {
+  const attendee = list.find((attendee) => attendee.t_z_id === inputText.value);
+  if (attendee) {
+    printUser(item);
+    submitOk(list);
   } else {
     submitDeny();
   }
@@ -74,9 +53,7 @@ deleteAll.addEventListener("click", (e) => {
 });
 deleteOne.addEventListener("click", (e) => {
   let str = inputText.value;
-  console.log(str);
   str = str.substr(0, str.length - 1);
-  console.log(str);
   inputText.value = str;
 });
 
@@ -90,9 +67,7 @@ submit.addEventListener("click", (e) => {
     let newId = inputText.value;
     if (newId[0] === "0") {
       newId = newId.substr(1);
-      console.log(newId);
       inputText.value = newId;
-      // doApi();
     }
     doApi();
   }
@@ -105,7 +80,6 @@ function submitOk(_ar) {
   document.body.append(userArrived);
   userConfirm.innerHTML = `<h1>נרשמת בהצלחה</h1>`;
   userArrived.innerHTML += userConfirm.innerHTML;
-  // inputText.innerHTML = "";
   doApi2();
   setTimeout((e) => {
     window.location.reload(true);

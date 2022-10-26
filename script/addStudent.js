@@ -1,9 +1,5 @@
 import { API_URL } from "/script/apiService.js";
 
-const init = () => {
-  declareEvents();
-};
-
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
   id_form.addEventListener("submit", (e) => {
@@ -15,7 +11,6 @@ const declareEvents = () => {
       last: document.querySelector("#id_last").value,
       // if_dikan: document.querySelector("#id_if_dikan").value,
     };
-    console.log(bodyData);
     addApiReq(bodyData);
     doApi();
     window.location =
@@ -23,25 +18,19 @@ const declareEvents = () => {
   });
 };
 
-// קוד חדש
-// /////////////////////////////////////////////////////////
 const doApi = () => {
   let url = API_URL + "/students_list.php";
   fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
-      // console.log(data);
-      createAllStudents(data);
-      // console.log(data);
+      printStudent(data);
     });
 };
 
-const createAllStudents = (_ar) => {
+const printStudent = (_ar) => {
   let isHere = false;
-  let userName;
   for (const item of _ar) {
     console.log(item);
-    // console.log("success");
     isHere = true;
     userName = console.log(isHere);
     const printUser = function (arr) {
@@ -50,10 +39,7 @@ const createAllStudents = (_ar) => {
     printUser(item);
   }
 };
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// סוף קוד חדש
 
-// זה הנכון
 const addApiReq = (_bodyData) => {
   let url = API_URL + "/add_students.php";
   fetch(url, {
@@ -63,9 +49,12 @@ const addApiReq = (_bodyData) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
-      alert("Stuednt added");
+      if (data.status === "ok") {
+        alert("Stuednt added");
+      } else {
+        console.log(data);
+      }
     });
 };
 
-init();
+declareEvents();

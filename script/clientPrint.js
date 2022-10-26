@@ -1,10 +1,4 @@
-// let heading = document.querySelector("#fName");
-
 import { API_URL } from "/script/apiService.js";
-
-const init = () => {
-  doApi();
-};
 
 const doApi = () => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -15,11 +9,7 @@ const doApi = () => {
     .then((resp) => resp.json())
     .then((data) => {
       renderToHTML(data[0]);
-      console.log(data);
     });
-  // window.location = url;
-
-  console.log(userId);
 };
 
 const renderToHTML = (_studentItem) => {
@@ -29,10 +19,10 @@ const renderToHTML = (_studentItem) => {
   timer();
 };
 
-init();
-
 const timer = function () {
   setTimeout((e) => {
     window.location = "../client/clientIndex.html";
   }, 200);
 };
+
+doApi();
