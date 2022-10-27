@@ -12,7 +12,7 @@ if (isset($_GET["id"])) {
   $get_id = $_GET["id"];
 }
 
-$query = "SELECT * FROM geo WHERE id = $get_id";
+$query = "SELECT * FROM geo WHERE t_z_id = $get_id";
 
 // conn.query();
 // מחזיר את כל המידע שקיבל מהדי בי
