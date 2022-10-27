@@ -21,13 +21,13 @@ const doApi2 = () => {
 };
 
 const printUser = function (arg) {
-  window.location = "../admin/print_page.html?id=" + arg.id;
+  window.location = "../admin/print_page.html?id=" + arg.t_z_id;
 };
 
 const printAttendeeFromList = (list) => {
   const attendee = list.find((attendee) => attendee.t_z_id === inputText.value);
   if (attendee) {
-    printUser(item);
+    printUser(attendee);
     submitOk(list);
   } else {
     submitDeny();
@@ -59,14 +59,21 @@ deleteOne.addEventListener("click", (e) => {
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  if (inputText.value.length < 8) {
-    alert("ת.ז קצרה מידי");
-  } else if (inputText.value.length > 9) {
+
+  const inputLength = inputText.value.length;
+  if (!inputLength) {
+    alert("נא הקש ת.ז.");
+  } else if (inputLength > 8) {
     alert("ת.ז ארוכה מידי");
   } else {
-    let newId = inputText.value;
-    if (newId[0] === "0") {
-      newId = newId.substr(1);
+    let newIdBase = inputText.value;
+    if (inputLength < 8) {
+      const delta = 8 - inputLength;
+      let prefix = "";
+      for (let i = 0; i < delta; i++) {
+        prefix += "0";
+      }
+      const newId = `${prefix}${newIdBase}`;
       inputText.value = newId;
     }
     doApi();
