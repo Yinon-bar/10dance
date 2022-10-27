@@ -1,15 +1,15 @@
 import { API_URL } from "/script/apiService.js";
 
-const doApi = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  // ?id= אוסף קווארי סטרינג
-  let userId = urlParams.get("id");
-  let url = API_URL + "singleStudent.php?id=" + userId;
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      renderToHTML(data[0]);
-    });
+window.onload = async () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    // ?id= אוסף קווארי סטרינג
+    let userId = urlParams.get("id");
+    let url = API_URL + "singleStudent.php?id=" + userId;
+    const res = await fetch(url);
+    const data = await res.json();
+    renderToHTML(data[0]);
+  } catch {}
 };
 
 const renderToHTML = (_studentItem) => {
@@ -24,5 +24,3 @@ const timer = function () {
     window.location = "../client/clientIndex.html";
   }, 200);
 };
-
-doApi();
