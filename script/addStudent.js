@@ -15,12 +15,11 @@ const declareEvents = () => {
       // if_dikan: document.querySelector("#id_if_dikan").value,
     };
     const t_z_id = bodyData.t_z_id;
-    await addAttendeeToDB(bodyData);
-    const attendee = await getAttendeeFromDB(t_z_id);
-    if (attendee) {
-      await printAttendee(t_z_id, adminDashboardURL);
-    } else {
-      alert("Attendee missing");
+    try {
+      await addAttendeeToDB(bodyData);
+      printAttendee(t_z_id, adminDashboardURL);
+    } catch {
+      alert("something went wrong");
     }
   });
 };
