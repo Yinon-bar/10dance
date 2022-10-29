@@ -1,47 +1,15 @@
-import { API_URL } from "./apiService.js";
+import { printAttendee } from "./utils/print.js";
+import { setAttendeeArrived } from "./utils/students.js";
 
-const doApi = () => {
-  let url = API_URL + "students_list.php";
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      printAttendeeFromList(data);
-    });
-};
+const clientURL = "../client/clientIndex.html";
 
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||
-const doApi2 = () => {
-  let bodyData = inputText.value;
-  let url = API_URL + "/has_arrived.php";
-  fetch(url, {
-    method: "PUT",
-    body: JSON.stringify(bodyData),
-    headers: { "content-type": "application/json" },
-  });
-};
-
-const printUser = function (arg) {
-  window.location = "../admin/print_page.html?id=" + arg.t_z_id;
-};
-
-const printAttendeeFromList = (list) => {
-  const attendee = list.find((attendee) => attendee.t_z_id === inputText.value);
-  if (attendee) {
-    printUser(attendee);
-    submitOk(list);
-  } else {
-    submitDeny();
-  }
-};
-
-// |||||||||||||||||||||||||||||||||||||||||||||||||||
-
-const btnAll = document.querySelectorAll(".btn");
 let inputText = document.querySelector("#input-text");
+const btnAll = document.querySelectorAll(".btn");
 const deleteAll = document.querySelector("#delete-all");
 const deleteOne = document.querySelector("#delete");
 const submit = document.querySelector("#submit");
 
+// MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
   btnAll[i].addEventListener("click", (e) => {
     inputText.value += btnAll[i].innerHTML;
@@ -57,6 +25,7 @@ deleteOne.addEventListener("click", (e) => {
   inputText.value = str;
 });
 
+// SUBMIT EVENT-LISTENER //
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -76,24 +45,33 @@ submit.addEventListener("click", (e) => {
       const newId = `${prefix}${newIdBase}`;
       inputText.value = newId;
     }
-    doApi();
+    submitToAPI(inputText.value);
   }
 });
 
-function submitOk(_ar) {
+const submitToAPI = async (t_z_id) => {
+  const isArrived = await setAttendeeArrived(t_z_id);
+  console.log("isArrived: ", isArrived);
+  if (isArrived.status === "ok") {
+    displayOk();
+    setTimeout(() => {
+      printAttendee(t_z_id, clientURL);
+    }, 2500);
+  } else {
+    displayDeny();
+  }
+};
+
+async function displayOk() {
   const userArrived = document.createElement("div");
   const userConfirm = document.createElement("h1");
   userArrived.classList.add("has-arrived");
   document.body.append(userArrived);
   userConfirm.innerHTML = `<h1>נרשמת בהצלחה</h1>`;
   userArrived.innerHTML += userConfirm.innerHTML;
-  doApi2();
-  setTimeout((e) => {
-    window.location.reload(true);
-  }, 3000);
 }
 
-function submitDeny() {
+function displayDeny() {
   const userArrived = document.createElement("div");
   const userConfirm = document.createElement("h1");
   userArrived.classList.add("has-arrived");
@@ -101,6 +79,8 @@ function submitDeny() {
   userConfirm.innerHTML = `<h1>אינך רשום במערכת, אנא גש לעמדת הרישום</h1>`;
   userArrived.innerHTML += userConfirm.innerHTML;
   setTimeout((e) => {
-    window.location.reload(true);
+    const displayElement = document.querySelector(".has-arrived");
+    displayElement.remove();
+    inputText.value = "";
   }, 3000);
 }
