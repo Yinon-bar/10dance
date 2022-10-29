@@ -1,7 +1,7 @@
 import { API_URL } from "/script/apiService.js";
-import { printAttendeeFromList } from "./utils/print.js";
+import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 
-const adminDashURL = "../admin/admin_dash.html";
+const adminDashboardURL = "../admin/admin_dash.html";
 
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
@@ -14,22 +14,15 @@ const declareEvents = () => {
       last: document.querySelector("#id_last").value,
       // if_dikan: document.querySelector("#id_if_dikan").value,
     };
-    const nameParam = bodyData.first + " " + bodyData.last;
     const t_z_id = bodyData.t_z_id;
     await addAttendeeToDB(bodyData);
-    const students = await getAllStudents();
-    await printAttendeeFromList(students, bodyData.t_z_id, adminDashURL);
+    const attendee = await getAttendeeFromDB(t_z_id);
+    if (attendee) {
+      await printAttendee(t_z_id, adminDashboardURL);
+    } else {
+      alert("Attendee missing");
+    }
   });
-};
-
-const getAllStudents = async () => {
-  try {
-    let url = API_URL + "/students_list.php";
-    const resp = await fetch(url);
-    const data = await resp.json();
-
-    return data;
-  } catch {}
 };
 
 const addAttendeeToDB = async (_bodyData) => {
