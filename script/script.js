@@ -1,4 +1,4 @@
-import { printAttendee } from "./utils/print.js";
+import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 import { setAttendeeArrived } from "./utils/students.js";
 
 const clientURL = "../client/clientIndex.html";
@@ -50,9 +50,9 @@ submit.addEventListener("click", (e) => {
 });
 
 const submitToAPI = async (t_z_id) => {
-  const isArrived = await setAttendeeArrived(t_z_id);
-  console.log("isArrived: ", isArrived);
-  if (isArrived.status === "ok") {
+  const attendee = await getAttendeeFromDB(t_z_id);
+  if (attendee) {
+    await setAttendeeArrived(t_z_id);
     displayOk();
     setTimeout(() => {
       printAttendee(t_z_id, clientURL);
