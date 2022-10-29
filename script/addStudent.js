@@ -1,4 +1,7 @@
 import { API_URL } from "/script/apiService.js";
+import { printAttendeeFromList } from "./utils/print.js";
+
+const adminDashURL = "../admin/admin_dash.html";
 
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
@@ -15,8 +18,7 @@ const declareEvents = () => {
     const t_z_id = bodyData.t_z_id;
     await addAttendeeToDB(bodyData);
     const students = await getAllStudents();
-    await printAttendeeFromList(students, bodyData.t_z_id);
-    window.location = `../admin/print_page.html?name=${nameParam}&id=${t_z_id}`;
+    await printAttendeeFromList(students, bodyData.t_z_id, adminDashURL);
   });
 };
 
@@ -28,19 +30,6 @@ const getAllStudents = async () => {
 
     return data;
   } catch {}
-};
-
-const printUser = function (arg) {
-  window.location = "../admin/print_page.html?id=" + arg.id;
-};
-
-const printAttendeeFromList = async (list, t_z_id) => {
-  const attendee = list.find((attendee) => attendee.t_z_id === t_z_id);
-  if (attendee) {
-    printUser(attendee);
-  } else {
-    alert("Attendee missing");
-  }
 };
 
 const addAttendeeToDB = async (_bodyData) => {
