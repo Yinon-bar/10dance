@@ -25,6 +25,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     // $query = "UPDATE students SET arrive='1' WHERE ('$body->bo ')";
     $query = "UPDATE geo SET arrive = 1 WHERE t_z_id = $bodyData";
     $result_insert = $conn->query($query);
+    echo $result_insert;
     if ($result_insert > 0) {
       echo "{'status':'ok'}";
     } else {
