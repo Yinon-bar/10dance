@@ -29,7 +29,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     if ($result_insert > 0) {
       echo "{'status':'ok'}";
     } else {
-      http_response_code(404);
+      http_response_code(500);
     }
     break;
 }
