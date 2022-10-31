@@ -70,7 +70,7 @@ h2.title.cta {
   width: 20rem;
   font-family: "Assistant", sans-serif;
   padding: 0 1rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.7);
   color: #065f9a;
   transition: all 100ms ease-in;
   line-height: 1rem;
@@ -109,7 +109,7 @@ button {
   margin: 0.2rem;
   font-size: 2rem;
   padding: 0.5rem 1rem;
-  background: #ffff;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 0.8rem;
   border: #1a1f49 3px solid;
   cursor: pointer;
@@ -118,7 +118,8 @@ button {
 button:active {
   background-color: #1a1f49;
   color: #fff;
-  transition: 0.2s;
+  transition: 100ms;
+  transform: scale(0.9);
 }
 
 /* injected objects!!!------------- */
