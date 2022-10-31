@@ -18,8 +18,7 @@ body {
   background-color: #94d0e0;
   overflow: hidden;
   height: 100vh;
-  background: linear-gradient(#a5bfe2, rgba(255, 255, 255, 0.4)),
-    url(/img/Students.jpg) no-repeat center / cover;
+  background: url(/img/bg-1.jpg) no-repeat center / cover;
 }
 
 .main {
@@ -39,14 +38,22 @@ body {
   font-size: 1.5rem;
 }
 .title.campus {
-  font-size: 3rem;
+  color: #1477b8;
+  font-size: 3.1rem;
   margin-bottom: 2rem;
 }
 img.logo {
   position: absolute;
-  right: -25px;
-  top: 0;
-  height: 200px;
+}
+img.logo.logo-uni {
+  right: -20px;
+  top: 0px;
+  height: 150px;
+}
+img.logo.logo-10dance {
+  left: 20px;
+  top: 20px;
+  height: 70px;
 }
 h2.title.cta {
   margin-bottom: 0.7rem;
@@ -63,9 +70,10 @@ h2.title.cta {
   width: 20rem;
   font-family: "Assistant", sans-serif;
   padding: 0 1rem;
-  background: none;
-  color: #1a1f49;
+  background: rgba(255, 255, 255, 0.4);
+  color: #065f9a;
   transition: all 100ms ease-in;
+  line-height: 1rem;
 }
 #input-text:focus {
   outline: 0;
