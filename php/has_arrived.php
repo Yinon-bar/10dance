@@ -23,12 +23,13 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     // $body->t_z_id = $conn->escape_string($body->t_z_id);
 
     // $query = "UPDATE students SET arrive='1' WHERE ('$body->bo ')";
-    $query = "UPDATE students SET arrive = 1 WHERE t_z_id = $bodyData";
+    $query = "UPDATE geo SET arrive = 1 WHERE t_z_id = $bodyData";
     $result_insert = $conn->query($query);
+    echo $result_insert;
     if ($result_insert > 0) {
       echo "{'status':'ok'}";
     } else {
-      echo "{'err':'there problem'}";
+      http_response_code(500);
     }
     break;
 }

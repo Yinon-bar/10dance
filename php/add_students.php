@@ -33,7 +33,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     if ($result_insert > 0) {
       echo json_encode("{'status':'ok'}");
     } else {
-      echo json_encode("{'err':'there problem'}");
+      http_response_code(500);
     }
     break;
 }

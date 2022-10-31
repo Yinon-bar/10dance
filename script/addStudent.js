@@ -1,12 +1,11 @@
 import { API_URL } from "/script/apiService.js";
+import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 
-const init = () => {
-  declareEvents();
-};
+const adminDashboardURL = "../admin/admin_dash.html";
 
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
-  id_form.addEventListener("submit", (e) => {
+  id_form.addEventListener("submit", async (e) => {
     e.preventDefault();
     // TODO: לבדוק שגיאות באינפוטים של המשתמש
     let bodyData = {
@@ -15,57 +14,28 @@ const declareEvents = () => {
       last: document.querySelector("#id_last").value,
       // if_dikan: document.querySelector("#id_if_dikan").value,
     };
-    console.log(bodyData);
-    addApiReq(bodyData);
-    doApi();
-    window.location =
-      "../admin/print_page.html?name=" + bodyData.first + " " + bodyData.last;
+    const t_z_id = bodyData.t_z_id;
+    try {
+      await addAttendeeToDB(bodyData);
+      printAttendee(t_z_id, adminDashboardURL);
+    } catch {
+      alert("something went wrong");
+    }
   });
 };
 
-// קוד חדש
-// /////////////////////////////////////////////////////////
-const doApi = () => {
-  let url = API_URL + "/students_list.php";
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      // console.log(data);
-      createAllStudents(data);
-      // console.log(data);
+const addAttendeeToDB = async (_bodyData) => {
+  try {
+    let url = API_URL + "/add_students.php";
+    await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(_bodyData),
+      headers: { "content-type": "application/json" },
     });
-};
-
-const createAllStudents = (_ar) => {
-  let isHere = false;
-  let userName;
-  for (const item of _ar) {
-    console.log(item);
-    // console.log("success");
-    isHere = true;
-    userName = console.log(isHere);
-    const printUser = function (arr) {
-      window.location = "../../Admin/print_page.html?id=" + arr.id;
-    };
-    printUser(item);
+    alert("Stuednt added");
+  } catch {
+    throw new Error("Error adding attendee");
   }
 };
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-// סוף קוד חדש
 
-// זה הנכון
-const addApiReq = (_bodyData) => {
-  let url = API_URL + "/add_students.php";
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(_bodyData),
-    headers: { "content-type": "application/json" },
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data);
-      alert("Stuednt added");
-    });
-};
-
-init();
+declareEvents();

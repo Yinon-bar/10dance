@@ -1,25 +1,15 @@
-// let heading = document.querySelector("#fName");
-
 import { API_URL } from "/script/apiService.js";
+const urlParams = new URLSearchParams(window.location.search);
 
-const init = () => {
-  doApi();
-};
-
-const doApi = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  // ?id= אוסף קווארי סטרינג
-  let userId = urlParams.get("id");
-  let url = API_URL + "singleStudent.php?id=" + userId;
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      renderToHTML(data[0]);
-      console.log(data);
-    });
-  // window.location = url;
-
-  console.log(userId);
+window.onload = async () => {
+  try {
+    // ?id= אוסף קווארי סטרינג
+    const userId = urlParams.get("id");
+    const url = API_URL + "singleStudent.php?id=" + userId;
+    const res = await fetch(url);
+    const data = await res.json();
+    renderToHTML(data[0]);
+  } catch {}
 };
 
 const renderToHTML = (_studentItem) => {
@@ -29,10 +19,9 @@ const renderToHTML = (_studentItem) => {
   timer();
 };
 
-init();
-
 const timer = function () {
+  const postPrintURL = urlParams.get("post-print-url");
   setTimeout((e) => {
-    window.location = "../client/clientIndex.html";
+    window.location = postPrintURL;
   }, 200);
 };
