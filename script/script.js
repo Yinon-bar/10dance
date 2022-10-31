@@ -12,7 +12,7 @@ const submit = document.querySelector("#submit");
 // MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
   btnAll[i].addEventListener("click", (e) => {
-    if (inputText.value.length < 7) inputText.value += btnAll[i].innerHTML;
+    if (inputText.value.length < 8) inputText.value += btnAll[i].innerHTML;
   });
 }
 
