@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>מערכת הגעה</title>
+    <title>10Dance</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;700;800&display=swap"
@@ -16,18 +16,22 @@
     ></script>
   </head>
   <body>
-    <!-- <div class="has-arrived"></div> -->
     <div class="main">
-      <header>
-        <img src="img/לוגו אוניברסיטה.png" alt="" srcset="" />
-        <div class="headings">
-          <h1>ברוכים הבאים ליום עיון שנתי ומפגש בוגרים</h1>
-          <h1>המחלקה לגיאוגרפיה 2022</h1>
-          <h2>נא הכנס ת.ז מלאה ללא ספרת ביקורת</h2>
-        </div>
-        <img src="img/לוגו אוניברסיטה.png" alt="" srcset="" />
-      </header>
-      <input id="input-text" placeholder="הכנס מספר ת.ז" type="text" />
+      <div class="title wrapper">
+        <h1 class="title welcome">ברוכים הבאים ליום עיון שנתי ומפגש בוגרים</h1>
+        <h1 class="title campus">המחלקה לגיאוגרפיה 2022</h1>
+        <img
+          class="logo logo-uni"
+          src="img/לוגו אוניברסיטה.png"
+          alt=""
+          srcset=""
+        />
+        <img class="logo logo-10dance" src="../img/logo.png" alt="" srcset="" />
+      </div>
+      <h2 class="title cta">
+        נא הכנס ת.ז. מלאה <span class="without">ללא</span> ספרת ביקורת
+      </h2>
+      <input id="input-text" type="text" />
       <div class="numpad">
         <button id="submit"><i class="fa-solid fa-check"></i></button>
         <div class="row row4">
@@ -53,9 +57,7 @@
           <button class="btn">9</button>
         </div>
       </div>
-      <footer>
-        <!--  -->
-      </footer>
+      <footer></footer>
     </div>
     <script type="module" defer src="../script/script.js"></script>
   </body>

@@ -16,32 +16,13 @@ html {
 
 body {
   background-color: #94d0e0;
-}
-
-header {
-  display: flex;
-  align-items: center;
-}
-
-header img {
-  height: 200px;
-}
-
-header h1 {
-  font-family: Huji-regular;
-  font-size: 3rem;
-  color: #1a1f49;
-}
-
-header h2 {
-  margin-top: 1.5rem;
-  font-family: Huji-regular;
-  font-size: 2.6rem;
-  color: #1a1f49;
+  overflow: hidden;
+  height: 100vh;
+  background: url(/img/bg-1.jpg) no-repeat center / cover;
 }
 
 .main {
-  width: 1400px;
+  height: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -49,18 +30,57 @@ header h2 {
   justify-content: center;
   text-align: center;
 }
+.title {
+  font-family: Huji-regular;
+  color: #1a1f49;
+}
+.title.welcome {
+  font-size: 1.5rem;
+}
+.title.campus {
+  color: #1477b8;
+  font-size: 3.1rem;
+  margin-bottom: 2rem;
+}
+img.logo {
+  position: absolute;
+}
+img.logo.logo-uni {
+  right: -20px;
+  top: 0px;
+  height: 150px;
+}
+img.logo.logo-10dance {
+  left: 20px;
+  top: 20px;
+  height: 70px;
+}
+h2.title.cta {
+  margin-bottom: 0.7rem;
+  font-size: 2.1rem;
+}
+span.without {
+  color: rgb(130, 14, 43);
+}
 
 #input-text {
-  font-size: 3rem;
+  direction: ltr;
+  font-size: 2rem;
   text-align: center;
-  margin: 2rem;
-  border-radius: 2rem;
-  border: #1a1f49 3px solid;
-  width: 30rem;
+  margin-bottom: 1.2rem;
+  border-radius: 50px;
+  border: 0;
+  width: 17rem;
   font-family: "Assistant", sans-serif;
-  padding: 0 1rem;
-  background: none;
-  color: #1a1f49;
+  padding: 0.4rem 0.5rem;
+  background: rgba(255, 255, 255, 0.6);
+  color: #065f9a;
+  transition: all 100ms ease-in;
+  line-height: 1rem;
+}
+#input-text:focus {
+  outline: 0;
+  border-color: #286eba;
 }
 
 .numpad {
@@ -72,7 +92,8 @@ header h2 {
 
 .numpad #submit {
   width: 100%;
-  background-color: #5cb797;
+  background-color: #1cc78b;
+  margin-top: 20px;
 }
 
 .numpad .row {
@@ -83,13 +104,13 @@ header h2 {
 }
 
 button {
-  width: 7rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   margin: 0.2rem;
-  font-size: 4rem;
+  font-size: 2rem;
   padding: 0.5rem 1rem;
-  background: #ffff;
-  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0.8rem;
   border: #1a1f49 3px solid;
   cursor: pointer;
 }
@@ -97,7 +118,8 @@ button {
 button:active {
   background-color: #1a1f49;
   color: #fff;
-  transition: 0.2s;
+  transition: 100ms;
+  transform: scale(0.9);
 }
 
 /* injected objects!!!------------- */
