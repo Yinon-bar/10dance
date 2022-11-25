@@ -5,7 +5,7 @@ const init = () => {
 };
 
 const doApi = () => {
-  let url = API_URL + "/students_has_arrive.php";
+  let url = API_URL + "students_has_arrive.php";
   fetch(url)
     .then((resp) => resp.json())
     .then((data) => {

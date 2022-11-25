@@ -26,7 +26,7 @@ const declareEvents = () => {
 
 const addAttendeeToDB = async (_bodyData) => {
   try {
-    let url = API_URL + "/add_students.php";
+    let url = API_URL + "add_students.php";
     await fetch(url, {
       method: "POST",
       body: JSON.stringify(_bodyData),
