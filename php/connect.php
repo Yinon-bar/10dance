@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "dance053508384";
 $dbname = "hebrew_uni";
 
 

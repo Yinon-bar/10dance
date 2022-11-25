@@ -1,7 +1,7 @@
 import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 import { setAttendeeArrived } from "./utils/students.js";
 
-const clientURL = "../client/clientIndex.html";
+const clientURL = "../index.html";
 
 let inputText = document.querySelector("#input-text");
 const btnAll = document.querySelectorAll(".btn");

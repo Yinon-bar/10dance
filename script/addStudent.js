@@ -1,7 +1,7 @@
 import { API_URL } from "/script/apiService.js";
 import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 
-const adminDashboardURL = "../admin/admin_dash.html";
+const adminDashboardURL = "../admin/index.html";
 
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
