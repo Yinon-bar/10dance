@@ -8,6 +8,8 @@ const btnAll = document.querySelectorAll(".btn");
 const deleteAll = document.querySelector("#delete-all");
 const deleteOne = document.querySelector("#delete");
 const submit = document.querySelector("#submit");
+const displayElement = document.createElement("h1");
+displayElement.classList.add("has-arrived");
 
 // MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
@@ -50,37 +52,24 @@ submit.addEventListener("click", (e) => {
 });
 
 const submitToAPI = async (t_z_id) => {
+  displayMessage("אנא המתן...")
   const attendee = await getAttendeeFromDB(t_z_id);
   if (attendee) {
     await setAttendeeArrived(t_z_id);
-    displayOk();
+    displayMessage("נרשמת בהצלחה")
     setTimeout(() => {
       printAttendee(t_z_id, clientURL);
-    }, 2500);
+    }, 700);
   } else {
-    displayDeny();
+    displayMessage("אינך רשום במערכת, אנא גש לעמדת הרישום")
+    setTimeout((e) => {
+      displayElement.remove();
+      inputText.value = "";
+    }, 2000);
   }
 };
 
-async function displayOk() {
-  const userArrived = document.createElement("div");
-  const userConfirm = document.createElement("h1");
-  userArrived.classList.add("has-arrived");
-  document.body.append(userArrived);
-  userConfirm.innerHTML = `<h1>נרשמת בהצלחה</h1>`;
-  userArrived.innerHTML += userConfirm.innerHTML;
-}
-
-function displayDeny() {
-  const userArrived = document.createElement("div");
-  const userConfirm = document.createElement("h1");
-  userArrived.classList.add("has-arrived");
-  document.body.append(userArrived);
-  userConfirm.innerHTML = `<h1>אינך רשום במערכת, אנא גש לעמדת הרישום</h1>`;
-  userArrived.innerHTML += userConfirm.innerHTML;
-  setTimeout((e) => {
-    const displayElement = document.querySelector(".has-arrived");
-    displayElement.remove();
-    inputText.value = "";
-  }, 3000);
+function displayMessage (message) {
+  displayElement.innerHTML = `<h1>${message}</h1>`;
+  document.body.append(displayElement);
 }
