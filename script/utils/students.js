@@ -3,7 +3,7 @@ import { API_URL } from "../apiService.js";
 export const getAllStudents = async () => {
   try {
     const url = API_URL + "students_list.php";
-    const resp = await fetch(url);
+    const resp = await fetch(url, {cache: "no-store"});
     const data = await resp.json();
 
     return data;
