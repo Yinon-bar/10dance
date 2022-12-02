@@ -14,7 +14,7 @@ displayElement.classList.add("has-arrived");
 // MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
   btnAll[i].addEventListener("click", (e) => {
-    if (inputText.value.length < 8) inputText.value += btnAll[i].innerHTML;
+    if (inputText.value.length < 9) inputText.value += btnAll[i].innerHTML;
   });
 }
 
@@ -34,12 +34,12 @@ submit.addEventListener("click", (e) => {
   const inputLength = inputText.value.length;
   if (!inputLength) {
     alert("נא הקש ת.ז.");
-  } else if (inputLength > 8) {
+  } else if (inputLength > 9) {
     alert("ת.ז ארוכה מידי");
   } else {
     let newIdBase = inputText.value;
-    if (inputLength < 8) {
-      const delta = 8 - inputLength;
+    if (inputLength < 9) {
+      const delta = 9 - inputLength;
       let prefix = "";
       for (let i = 0; i < delta; i++) {
         prefix += "0";
