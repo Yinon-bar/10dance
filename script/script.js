@@ -14,26 +14,26 @@ displayElement.classList.add("has-arrived");
 
 // MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
-  btnAll[i].addEventListener("click", (e) => {
-    if (inputText.value.length < 9) inputText.value += btnAll[i].innerHTML;
-  });
+  btnAll[i].onclick = () => {
+      if (inputText.value.length < 9) inputText.value += btnAll[i].innerHTML;
+    };
 }
 
-deleteAll.addEventListener("click", (e) => {
+deleteAll.onclick = () => {
   inputText.value = "";
-});
-deleteOne.addEventListener("click", (e) => {
+};
+deleteOne.onclick = () => {
   let str = inputText.value;
   str = str.substr(0, str.length - 1);
   inputText.value = str;
-});
+};
 
 // SUBMIT EVENT-LISTENER //
-submit.addEventListener("click", (e) => {
+submit.onclick = (e) => {
   e.preventDefault();
   const validId = inputValidationId(inputText.value)
   if (validId) {submitToAPI(validId)}
-});
+};
 
 const submitToAPI = async (t_z_id) => {
   displayMessage("אנא המתן...")
