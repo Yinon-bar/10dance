@@ -31,8 +31,8 @@ deleteOne.addEventListener("click", (e) => {
 // SUBMIT EVENT-LISTENER //
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  const validInput = inputValidationId(inputText.value)
-  if (validInput) {submitToAPI(validInput)}
+  const validId = inputValidationId(inputText.value)
+  if (validId) {submitToAPI(validId)}
 });
 
 const submitToAPI = async (t_z_id) => {

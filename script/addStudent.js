@@ -1,28 +1,34 @@
 import { API_URL } from "/script/apiService.js";
-import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
+import { printAttendee } from "./utils/print.js";
+import { inputValidationId } from "./utils/id.js";
 
 const adminDashboardURL = "../admin/index.html";
+const id_form = document.querySelector("#id_form");
+const inputId = document.querySelector("#id_t_z_id");
+const inputFirstName = document.querySelector("#id_first");
+const inputLastName = document.querySelector("#id_last");
 
-const declareEvents = () => {
-  let id_form = document.querySelector("#id_form");
-  id_form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    // TODO: לבדוק שגיאות באינפוטים של המשתמש
-    let bodyData = {
-      t_z_id: document.querySelector("#id_t_z_id").value,
-      first: document.querySelector("#id_first").value,
-      last: document.querySelector("#id_last").value,
-      // if_dikan: document.querySelector("#id_if_dikan").value,
-    };
-    const t_z_id = bodyData.t_z_id;
-    try {
-      await addAttendeeToDB(bodyData);
-      printAttendee(t_z_id, adminDashboardURL);
-    } catch {
-      alert("something went wrong");
-    }
-  });
-};
+id_form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const validId = inputValidationId(inputId.value);
+  if (!validId) return;
+
+  // TODO: add validation to first and last name inputs.
+  const bodyData = {
+    t_z_id: validId,
+    first: inputFirstName.value,
+    last: inputLastName.value,
+    // if_dikan: document.querySelector("#id_if_dikan").value,
+  };
+  const t_z_id = bodyData.t_z_id;
+  try {
+    await addAttendeeToDB(bodyData);
+    printAttendee(t_z_id, adminDashboardURL);
+  } catch {
+    alert("something went wrong");
+    console.error("something went wrong while writing to the DB");
+  }
+});
 
 const addAttendeeToDB = async (_bodyData) => {
   try {
@@ -38,4 +44,3 @@ const addAttendeeToDB = async (_bodyData) => {
   }
 };
 
-declareEvents();
