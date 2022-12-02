@@ -1,3 +1,4 @@
+import { inputValidationId } from "./utils/id.js";
 import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 import { setAttendeeArrived } from "./utils/students.js";
 
@@ -30,25 +31,8 @@ deleteOne.addEventListener("click", (e) => {
 // SUBMIT EVENT-LISTENER //
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const inputLength = inputText.value.length;
-  if (!inputLength) {
-    alert("נא הקש ת.ז.");
-  } else if (inputLength > 9) {
-    alert("ת.ז ארוכה מידי");
-  } else {
-    let newIdBase = inputText.value;
-    if (inputLength < 9) {
-      const delta = 9 - inputLength;
-      let prefix = "";
-      for (let i = 0; i < delta; i++) {
-        prefix += "0";
-      }
-      const newId = `${prefix}${newIdBase}`;
-      inputText.value = newId;
-    }
-    submitToAPI(inputText.value);
-  }
+  const validInput = inputValidationId(inputText.value)
+  if (validInput) {submitToAPI(validInput)}
 });
 
 const submitToAPI = async (t_z_id) => {
