@@ -24,21 +24,10 @@ const renderStudent = (item) => {
   let trElem = document.createElement("tr");
   document.querySelector("#id_tbody").append(trElem);
 
-  // זה הנכון והישן
-  // trElem.innerHTML += `
-  //   <th>${item.id}</th>
-  //   <th>${item.t_z_id}</th>
-  //   <th>${item.first} ${item.last}</th>
-  //   <th>${item.class}</th>
-  //   <th>${item.if_dikan == "בהצטינות" ? "כן" : ""}</th>
-  //   <th>${item.if_dikan == "בהצטינות יתרה" ? "כן" : ""}</th>
-  //   <th>${item.arrive == 1 ? "כן" : ""}</th>
-  // `;
   trElem.innerHTML += `
     <th>${item.id}</th>
     <th>${item.t_z_id}</th>
     <th>${item.first} ${item.last}</th>
-    <th>${item.arrive == 1 ? "כן" : ""}</th> 
     <th><button class="btn btn-success" id="btnTableDelete">מחק</button>
     <button class="btn btn-success" id="btnTableEdit">עריכה</button> 
     </th> 
