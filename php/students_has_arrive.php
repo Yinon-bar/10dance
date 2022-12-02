@@ -12,7 +12,7 @@ header("Access-Control-Allow-Methods: PUT");
 
 // $query = "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
 
-$query =  "SELECT id FROM geo WHERE arrive = 1 ORDER BY first";
+$query =  "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
 
 // conn.query();
 // מחזיר את כל המידע שקיבל מהדי בי
