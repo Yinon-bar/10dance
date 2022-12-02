@@ -21,7 +21,6 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     // לגרום לפירצה ולהרס של המסד נתונים
     $query = "UPDATE geo SET arrive = 1 WHERE t_z_id = $bodyData";
     $result_insert = $conn->query($query);
-    echo $result_insert;
     if ($result_insert > 0) {
       echo "{'status':'ok'}";
     } else {
