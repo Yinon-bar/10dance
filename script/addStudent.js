@@ -8,7 +8,7 @@ const inputId = document.querySelector("#id_t_z_id");
 const inputFirstName = document.querySelector("#id_first");
 const inputLastName = document.querySelector("#id_last");
 
-id_form.addEventListener("submit", async (e) => {
+id_form.onsubmit = async (e) => {
   e.preventDefault();
   const validId = inputValidationId(inputId.value);
   if (!validId) return;
@@ -28,7 +28,7 @@ id_form.addEventListener("submit", async (e) => {
     alert("something went wrong");
     console.error("something went wrong while writing to the DB");
   }
-});
+};
 
 const addAttendeeToDB = async (_bodyData) => {
   try {
