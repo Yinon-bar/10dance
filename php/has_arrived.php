@@ -19,8 +19,6 @@ switch ($_SERVER["REQUEST_METHOD"]) {
   case "PUT":
     // מסנן את המידע כדי שלא יבצעו אס קיו אל אנג'יקשן שיכול
     // לגרום לפירצה ולהרס של המסד נתונים
-    // $body->arrive = $conn->escape_string($body->arrive);
-    // $body->t_z_id = $conn->escape_string($body->t_z_id);
     $query = "UPDATE geo SET arrive = 1 WHERE t_z_id = $bodyData";
     $result_insert = $conn->query($query);
     echo $result_insert;
