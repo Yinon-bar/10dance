@@ -15,8 +15,11 @@ window.onload = async () => {
 const renderToHTML = (_studentItem) => {
   document.querySelector("#fName").innerHTML =
     _studentItem.first + " " + _studentItem.last;
-  window.print();
-  timer();
+  setTimeout(() => {
+    window.print();
+    timer();
+  }, 100);
+    
 };
 
 const timer = function () {

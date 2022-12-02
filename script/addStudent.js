@@ -1,7 +1,7 @@
 import { API_URL } from "/script/apiService.js";
 import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 
-const adminDashboardURL = "../admin/admin_dash.html";
+const adminDashboardURL = "../admin/index.html";
 
 const declareEvents = () => {
   let id_form = document.querySelector("#id_form");
@@ -26,7 +26,7 @@ const declareEvents = () => {
 
 const addAttendeeToDB = async (_bodyData) => {
   try {
-    let url = API_URL + "/add_students.php";
+    let url = API_URL + "add_students.php";
     await fetch(url, {
       method: "POST",
       body: JSON.stringify(_bodyData),
