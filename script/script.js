@@ -1,3 +1,4 @@
+import { inputValidationId } from "./utils/id.js";
 import { getAttendeeFromDB, printAttendee } from "./utils/print.js";
 import { setAttendeeArrived } from "./utils/students.js";
 
@@ -14,7 +15,7 @@ displayElement.classList.add("has-arrived");
 // MAIN BUTTONS EVENT-LISTENERS //
 for (let i = 0; i < btnAll.length; i++) {
   btnAll[i].addEventListener("click", (e) => {
-    if (inputText.value.length < 8) inputText.value += btnAll[i].innerHTML;
+    if (inputText.value.length < 9) inputText.value += btnAll[i].innerHTML;
   });
 }
 
@@ -30,25 +31,8 @@ deleteOne.addEventListener("click", (e) => {
 // SUBMIT EVENT-LISTENER //
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const inputLength = inputText.value.length;
-  if (!inputLength) {
-    alert("נא הקש ת.ז.");
-  } else if (inputLength > 8) {
-    alert("ת.ז ארוכה מידי");
-  } else {
-    let newIdBase = inputText.value;
-    if (inputLength < 8) {
-      const delta = 8 - inputLength;
-      let prefix = "";
-      for (let i = 0; i < delta; i++) {
-        prefix += "0";
-      }
-      const newId = `${prefix}${newIdBase}`;
-      inputText.value = newId;
-    }
-    submitToAPI(inputText.value);
-  }
+  const validId = inputValidationId(inputText.value)
+  if (validId) {submitToAPI(validId)}
 });
 
 const submitToAPI = async (t_z_id) => {
