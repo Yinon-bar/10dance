@@ -11,5 +11,5 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 if (mysqli_connect_error()) {
   die("can't connect");
 }
-echo "Database Connected!";
+
 $conn->query("SET NAMES 'utf8'");
