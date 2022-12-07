@@ -21,5 +21,5 @@ while ($row = $result->fetch_assoc()) {
   array_push($rowsData_ar, $row);
 }
 
-// print_r($rowsData_ar);
+print_r($rowsData_ar);
 echo json_encode($rowsData_ar);

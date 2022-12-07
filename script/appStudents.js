@@ -6,12 +6,13 @@ const init = () => {
 
 const doApi = () => {
   let url = API_URL + "students_has_arrive.php";
+  console.log(url);
   fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-      // console.log(data);
-      createAllStudents(data);
-    });
+    .then((resp) => {
+      console.log(resp);
+      return resp.json();
+    })
+    .then((data) => createAllStudents(data));
 };
 
 const createAllStudents = (_ar) => {
