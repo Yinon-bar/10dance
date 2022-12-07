@@ -10,8 +10,6 @@ header("Access-Control-Allow-Methods: PUT");
 // זה הנכון והישן
 // $query = "SELECT * FROM students WHERE arrive = 1 ORDER BY class, first";
 
-// $query = "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
-
 $query =  "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
 
 // conn.query();
