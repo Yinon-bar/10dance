@@ -8,10 +8,7 @@ const doApi = () => {
   let url = API_URL + "students_has_arrive.php";
   fetch(url)
     .then((resp) => resp.json())
-    .then((data) => {
-      // console.log(data);
-      createAllStudents(data);
-    });
+    .then((data) => createAllStudents(data));
 };
 
 const createAllStudents = (_ar) => {
