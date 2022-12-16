@@ -14,7 +14,8 @@ window.onload = async () => {
 
 const renderToHTML = (_studentItem) => {
   document.querySelector("#fName").innerHTML =
-    _studentItem.first + " " + _studentItem.last;
+  _studentItem.first + " " + _studentItem.last;
+  document.querySelector("#institute").innerHTML = _studentItem.institute;
   setTimeout(() => {
     window.print();
     timer();
