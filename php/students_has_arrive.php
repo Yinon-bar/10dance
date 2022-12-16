@@ -7,8 +7,6 @@ header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 // header("Access-Control-Allow-Methods: PUT");
 
-// זה הנכון והישן
-// $query = "SELECT * FROM students WHERE arrive = 1 ORDER BY class, first";
 
 $query =  "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
 
@@ -24,6 +22,4 @@ while ($row = $result->fetch_assoc()) {
   array_push($rowsData_ar, $row);
 }
 
-// echo $rowsData_ar;
-// print_r($rowsData_ar);
 echo json_encode($rowsData_ar);
