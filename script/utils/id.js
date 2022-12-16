@@ -1,24 +1,17 @@
-export const inputValidationId = (input) => {
-    let response = 0;
-    const inputLength = input.length;
-    if (!inputLength) {
+export const inputValidationId = (inputId) => {
+    let responseId = 0;
+    if (!inputId.length) {
         alert("נא הקש ת.ז.");
-    } else if (inputLength > 9) {
+    } else if (inputId.length > 9) {
         alert("ת.ז ארוכה מידי");
     } else {
-        let newIdBase = input;
-        if(inputLength === 9){
-            response = input;
-        }
-        else  {
-            const delta = 9 - inputLength;
-            let prefix = "";
+        responseId = inputId;
+        if(responseId.length !== 9) {
+            const delta = 9 - inputId.length;
             for (let i = 0; i < delta; i++) {
-            prefix += "0";
+            responseId = "0" + responseId;
             }
-            const newId = `${prefix}${newIdBase}`;
-            response = newId;
         }
     }
-    return response;
+    return responseId;
 }

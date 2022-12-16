@@ -5,7 +5,7 @@ include "./connect.php";
 header('Content-Type: application/json');
 // מאפשר לכל שרת מכל דומיין לפנות לאיי פי איי שלנו
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: PUT");
+// header("Access-Control-Allow-Methods: PUT");
 
 
 $query =  "SELECT * FROM geo WHERE arrive = 1 ORDER BY first";
