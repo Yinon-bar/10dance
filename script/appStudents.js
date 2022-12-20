@@ -26,6 +26,7 @@ const renderStudent = (item) => {
     <th>${item.id}</th>
     <th>${item.t_z_id}</th>
     <th>${item.first} ${item.last}</th>
+    <th>${item.institute}</th>
     <th><button class="btn btn-success" id="btnTableDelete">מחק</button>
     <button class="btn btn-success" id="btnTableEdit">עריכה</button> 
     </th> 

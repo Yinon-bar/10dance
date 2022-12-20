@@ -7,7 +7,7 @@ const id_form = document.querySelector("#id_form");
 const inputId = document.querySelector("#id_t_z_id");
 const inputFirstName = document.querySelector("#id_first");
 const inputLastName = document.querySelector("#id_last");
-const inputIfDikan = document.querySelector("#id_if_dikan");
+const institute = document.querySelector("#institute");
 
 id_form.onsubmit = async (e) => {
   e.preventDefault();
@@ -19,7 +19,7 @@ id_form.onsubmit = async (e) => {
     t_z_id: validId,
     first: inputFirstName.value,
     last: inputLastName.value,
-    if_dikan: inputIfDikan.value,
+    institute: institute.value,
   };
   const t_z_id = bodyData.t_z_id;
   try {

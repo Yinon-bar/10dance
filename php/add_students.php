@@ -24,11 +24,11 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     $body->t_z_id = $conn->escape_string($body->t_z_id);
     $body->first = $conn->escape_string($body->first);
     $body->last = $conn->escape_string($body->last);
-    $body->if_dikan = $conn->escape_string($body->if_dikan);
+    $body->institute = $conn->escape_string($body->institute);
 
 
-    // $query = "INSERT INTO students (t_z_id,first,last,if_dikan,arrive) VALUES ('$body->t_z_id','$body->first','$body->last',$body->if_dikan,0)";
-    $query = "INSERT INTO geo (t_z_id,first,last,if_dikan ,arrive) VALUES ('$body->t_z_id','$body->first', '$body->last','$body->if_dikan',1)";
+    // $query = "INSERT INTO students (t_z_id,first,last,institute,arrive) VALUES ('$body->t_z_id','$body->first','$body->last',$body->institute,0)";
+    $query = "INSERT INTO geo (t_z_id,first,last,institute ,arrive) VALUES ('$body->t_z_id','$body->first', '$body->last','$body->institute',1)";
     $result_insert = $conn->query($query);
     if ($result_insert > 0) {
       echo json_encode("{'status':'ok'}");
