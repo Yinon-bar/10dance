@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 $dbhost = "localhost:3306";
 $dbuser = "zerdance_yinon";
 $dbpass = "dance053508384";
-$dbname = "zerdance_dec_geo";
+$dbname = "zerdance_geo_try";
 
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
