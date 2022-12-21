@@ -22,7 +22,7 @@
         class="col-md-6 p-lg-5 bg-light bg-opacity-50 rounded-3 mx-auto shadow"
       >
         <div class="mb-3">
-          <label class="form-label fs-5">ת.ז סטודנט - ללא ספרת ביקורת</label>
+          <label class="form-label fs-5">ת.ז סטודנט - כולל ספרת ביקורת</label>
           <input
             placeholder="הכנס ת.ז"
             type="text"
@@ -54,12 +54,15 @@
 
         <div class="mb-3">
           <label class="form-label fs-5" for="inputGroupSelect02"
-            >מצטיין דיקן</label
+            >מוסד לימודים</label
           >
-          <select class="form-select" id="id_if_dikan" required>
-            <option value="1" selected>לא מצטיין</option>
-            <option value="2">מצטיין</option>
-          </select>
+          <input
+            placeholder="הכנס מוסד לימודים"
+            type="text"
+            class="form-control"
+            id="institute"
+            required
+          />
         </div>
         <div class="form-check">
           <label class="form-check-label fs-5 m-4" for="flexCheckChecked">

@@ -8,10 +8,7 @@ const doApi = () => {
   let url = API_URL + "students_has_arrive.php";
   console.log(url);
   fetch(url)
-    .then((resp) => {
-      console.log(resp);
-      return resp.json();
-    })
+    .then((resp) => resp.json())
     .then((data) => createAllStudents(data));
 };
 
@@ -29,6 +26,7 @@ const renderStudent = (item) => {
     <th>${item.id}</th>
     <th>${item.t_z_id}</th>
     <th>${item.first} ${item.last}</th>
+    <th>${item.institute}</th>
     <th><button class="btn btn-success" id="btnTableDelete">מחק</button>
     <button class="btn btn-success" id="btnTableEdit">עריכה</button> 
     </th> 

@@ -15,10 +15,10 @@ html {
 }
 
 body {
-  background-color: #94d0e0;
+  background-color: #96cae7;
   overflow: hidden;
   height: 100vh;
-  background: url(/img/bg-1.jpg) no-repeat center / cover;
+  /* background: url(/img/bg-1.jpg) no-repeat center / cover; */
 }
 
 .main {
@@ -30,34 +30,53 @@ body {
   justify-content: center;
   text-align: center;
 }
+.title-section {
+  margin-bottom: 2rem;
+}
 .title {
   font-family: Huji-regular;
   color: #1a1f49;
 }
 .title.welcome {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 .title.campus {
   color: #1477b8;
   font-size: 3.1rem;
-  margin-bottom: 2rem;
 }
-img.logo {
+.title.welcome:last-child {
+  color: #1477b8;
+  font-size: 2.1rem;
+}
+.logo-line {
   position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.logos-flex {
+  width: 100%;
+  padding: 20px;
+}
+.uni-logos,
+.logos-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 img.logo.logo-uni {
-  right: -20px;
-  top: 0px;
-  height: 150px;
+  height: 100px;
+}
+img.logo.logo-agi {
+  height: 70px;
+  border-radius: 5px;
 }
 img.logo.logo-10dance {
-  left: 20px;
-  top: 20px;
   height: 70px;
 }
 h2.title.cta {
   margin-bottom: 0.7rem;
-  font-size: 2.1rem;
+  font-size: 1.7rem;
 }
 span.without {
   color: rgb(130, 14, 43);
@@ -111,7 +130,7 @@ button {
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 0.8rem;
-  border: #1a1f49 3px solid;
+  border: #1a1f49 2px solid;
   cursor: pointer;
 }
 
